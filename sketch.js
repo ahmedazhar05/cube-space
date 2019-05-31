@@ -1,8 +1,8 @@
 /*
  * This is 'Cube Space', a game created by Azhar Ahmed
  * using p5.js (www.p5js.org) javascript library.
- * The goal of creation of this game is to test out self 
- * possibilites and possibilities of p5js in game developement.
+ * The goal of creation of this game is to test out self possibilites and 
+ * possibilities of p5js in game developement.
  *
  * In this game, a Red Cube moves forward in its path towards horizon 
  * and there are black hurdles which comes on its way, a player has 
@@ -11,12 +11,9 @@
  * 
  * One who travels farthest or scores the highest, Wins !
  *
- * The source code of the game is available at 
- * https://github.com/ahmedazhar05/cube-space
- * Feel free to edit the file and issue a pull request!
- * 
- * PLAY and Share it with your Friends! Enjoy!
- * Thank You!
+ * The source code of the game is available @ 
+ * Play and Share it with your Friends ! Enjoy !
+ * Thank You !
  */
 
 var mybox;
@@ -60,7 +57,7 @@ function preload() {
     loadImage('https://i.imgur.com/33vC0Ip.png'), //7
     loadImage('https://i.imgur.com/czfTA9L.png'), //8
     loadImage('https://i.imgur.com/OyUKIsq.png'), //9
-    loadImage('https://i.imgur.com/l0zXha6.png'), //10
+    //loadImage('https://i.imgur.com/l0zXha6.png'), //10
   ];
 }
 
@@ -101,8 +98,6 @@ function setup() {
   //LEVEL  1    2     3     4     5      6      7      8      9      10     11
   level = [0, 1500, 4000, 6300, 12700, 20900, 27100, 32700, 45700, 60000, 76500];
   ind = 0;
-  score = level[0];
-  hspeed=4;
 
   base = { //game base
     w: width / 2, //300
@@ -113,7 +108,7 @@ function setup() {
   //Level 1 Setting
   rows = 2; //3 rows of hurdles at max in the screen or on the base
   speed = 3; //mybox direction and speed
-  score = level[0];
+  score = level[0];//level[0];
   hspeed=4;
   h = int(base.w / getSize(false) /*hurdle's size*/ ) - 7;
 
@@ -203,6 +198,8 @@ function draw() {
       
     }
   }
+
+
   //crash
   let lhr = hurdle.length - 1; //Last Hurdle Row
   if (abs(hurdle[lhr][0].y - mybox.y) < (hurdle[lhr][0].size + mybox.size) / 2) {
@@ -211,7 +208,7 @@ function draw() {
         //run=false;
         sc.levelup(12);  //Game Over
         if(crash===0){
-          score = score - abs(speed);
+          score = score - abs(hspeed);
           speed = 0;
           hspeed =0;
         }else if(crash === 40){
@@ -221,7 +218,7 @@ function draw() {
       }
     }
   }
-  
+
   rotateX(80); //game rotation
 
   //base
@@ -232,6 +229,7 @@ function draw() {
   ambientMaterial(220); //240
   box(base.w, base.h, 20); //base creation
   pop();
+
 
   //keyboard controls
   if (keyIsDown(LEFT_ARROW)) { // && speed > 0) {
@@ -265,7 +263,7 @@ function draw() {
       }
     }
   }
-
+  
   //mybox lightning
   directionalLight(200, 0, 0, -base.w / 2, base.h / 2, 0);
 
