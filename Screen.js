@@ -9,8 +9,14 @@ class Screen {
     pop();
   }
   enter() {
+    let inc = 3;
     push();
-    translate(mybox.x, mybox.z + getSize(true)/2, mybox.y);
+    translate(mybox.x, -180, mybox.y-400);
+    noStroke();
+    texture(getImage(5));
+    plane((width/10)*inc, (height/15)*inc);
+    //translate(mybox.x, mybox.z + getSize(true)/2, mybox.y);
+    translate(0, mybox.z + getSize(true)/2 +180, 400);
     rotateX(millis()/10);
     translate(getSize(true)*3/2, 0,0);
     this.arrow();
