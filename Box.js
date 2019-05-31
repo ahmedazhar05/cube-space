@@ -1,8 +1,3 @@
-/*
- * This code is a part of sketch.js at
- * https://github.com/ahmedazhar05/cube-space
- */
- 
 let size;
 let x, y, z;
 let pos;
