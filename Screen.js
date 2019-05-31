@@ -1,9 +1,4 @@
-/*
- * This code is a part of sketch.js at
- * https://github.com/ahmedazhar05/cube-space
- */
- 
- class Screen {
+class Screen {
   constructor() {
     let z = 0;
   }
@@ -36,7 +31,7 @@
     texture(getImage(3));
     plane(sWidth, ht); //SCORE
     translate((sWidth + nWidth) / 2 + (num * nWidth), 0, 0);
-    sc = int(sc * 10);
+    sc = int(sc)*10;
     for (let i = 0; i < num; i++) {
       sc = int(sc / 10);
       translate(-nWidth, 0, 0);
@@ -114,7 +109,8 @@
     noStroke();
     background(169, 209, 142);
     translate(0, 0, 490);
-    this.format(getImage(2), getBase().w, getBase().h / 3);
+    this.format(getImage(2), getBase().w, getBase().h / 3);//Game Over Screen
+    score=int(score);
     translate(((score + "").length) * num.w / 2 + num.w / 2, -15, 0);
     while (score != 0) {
       translate(-num.w, 0, 0);
