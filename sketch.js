@@ -57,7 +57,6 @@ function preload() {
     loadImage('https://i.imgur.com/33vC0Ip.png'), //7
     loadImage('https://i.imgur.com/czfTA9L.png'), //8
     loadImage('https://i.imgur.com/OyUKIsq.png'), //9
-    //loadImage('https://i.imgur.com/l0zXha6.png'), //10
   ];
 }
 
