@@ -41,7 +41,7 @@ function preload() {
     start: loadImage('https://i.imgur.com/7jYQerq.png'),
     over: loadImage('https://i.imgur.com/nj9AoLP.png'),
     score: loadImage('https://i.imgur.com/02ApgEr.png'),
-    pause: loadImage('https://i.imgur.com/ySXny4s.png'),
+    pause: loadImage('https://i.imgur.com/APpKT78.png'),
     level: loadImage('https://i.imgur.com/qTUb9NJ.png'),
     flevel: loadImage('https://i.imgur.com/WXC7xpP.png'),
     ov: loadImage('https://i.imgur.com/DYwHfx5.png'),
@@ -95,7 +95,7 @@ function setup() {
   screenshow = 'S';
   crash=0;
   //LEVEL  1    2     3     4     5      6      7      8      9      10     11
-  level = [0, 1500, 4000, 6300, 12700, 20900, 27100, 32700, 45700, 60000, 76500];
+  level = [0, 1500, 4700, 7200, 13600, 21800, 28000, 33600, 46600, 72600, 77400];
   ind = 0;
 
   base = { //game base
