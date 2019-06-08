@@ -1,0 +1,24 @@
+html{
+  margin:0px;
+}
+body {
+  margin: 0px;
+  background: #696969;
+}
+canvas {
+  display: block;
+}
+p#detail{
+  text-align: justify; font-family:'Roboto', sans-serif;
+  color:rgba(0,0,0,0);
+  font-style:italic;
+  text-shadow: 0px 0px 1.5px #fff;
+}
+a#source-code{
+  text-decoration: none;
+  text-shadow: 0px 0px 1.5px aquamarine;
+  color: rgba(0,0,0,0);
+}
+a#source-code:hover{
+  text-decoration: underline;
+}
