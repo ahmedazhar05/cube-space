@@ -30,15 +30,15 @@ let screenshow;
 let score;
 let screen;
 let s;
-let fc; //camera framecount everytime game pauses
+let fc; //camera framecount increases everytime game pauses
 let level = [];
 let ind; //level index
-let hspeed;//hurdle speed
+let hspeed; //hurdle speed
 let crash;
 
 function preload() {
   s = {
-    start: loadImage('https://i.imgur.com/7jYQerq.png'),
+    start: loadImage('https://i.imgur.com/9sGVhCw.png'),
     over: loadImage('https://i.imgur.com/nj9AoLP.png'),
     score: loadImage('https://i.imgur.com/02ApgEr.png'),
     pause: loadImage('https://i.imgur.com/APpKT78.png'),
@@ -82,21 +82,11 @@ function getImage(index) {
 }
 
 function setup() {
-
-  createCanvas(600, 600, WEBGL);
+  
+  createCanvas(800, 800, WEBGL);
+  frameRate(30);
   angleMode(DEGREES);
   colorMode(RGB);
-
-  fc = 0;
-  bg = loadImage('https://i.imgur.com/34soDlj.png');
-  run = false;
-  camsp = 2;//default camera speed
-  camMove = true;
-  screenshow = 'S';
-  crash=0;
-  //LEVEL  1    2     3     4     5      6      7      8      9      10     11
-  level = [0, 1500, 4700, 7200, 13600, 21800, 28000, 33600, 46600, 72600, 77400];
-  ind = 0;
 
   base = { //game base
     w: width / 2, //300
@@ -104,11 +94,23 @@ function setup() {
     d: width / 30, //20
   };
 
+  fc = 0;
+  /*bg = loadImage('https://i.imgur.com/34soDlj.png');*/
+  run = false;
+  camsp = base.w / 150; //default camera speed
+  camMove = true;
+  screenshow = 'S';
+  crash = 0;
+
+  //LEVEL  1   2     3     4     5     6     7     8     9    10    11
+  level = [0, 600, 1400, 2200, 3250, 4200, 5300, 6300, 7300, 8400, 9500];
+  ind = 0;
+
   //Level 1 Setting
   rows = 2; //3 rows of hurdles at max in the screen or on the base
-  speed = 3; //mybox direction and speed
-  score = level[0];//level[0];
-  hspeed=4;
+  speed = base.w / 150; //mybox direction and speed
+  score = level[0]; //0
+  hspeed = base.h / 225; //hurdle speed
   h = int(base.w / getSize(false) /*hurdle's size*/ ) - 7;
 
   cam = createCamera();
@@ -142,7 +144,7 @@ function draw() {
   } else if (screenshow === 'E') {
     sc.enter();
   } else if (screenshow === 'P') {
-    sc.score(score,ind + 1);
+    sc.score(score, ind + 1);
   }
   if (screenshow === 'O') {
     cam.setPosition(0, 0, base.h * 75 / 90);
@@ -152,49 +154,50 @@ function draw() {
 
   //levelUp pop-up
   if (screenshow == 'P') {
-    if (score >= level[ind] && score < level[ind] + 75) {
+    if (score >= level[ind] && score < level[ind] + 25 && crash === 0) {
       sc.levelup(ind + 1);
-    } else if (ind < level.length && score + abs(hspeed) > level[ind + 1]) {
+    } else if (ind < level.length && score + 1 > level[ind + 1]) {
       sc.reset();
-      
-      if(ind < 11)
+
+      if (ind < 11){
         ind += 1;
-      switch(ind+1){
+      }
+      switch (ind + 1) {
         case 2:
-          hspeed+=3;
-          h+=1;
+          hspeed += 3;
+          h += 1;
           break;
         case 5:
         case 7:
         case 8:
-          if(speed < 0)
-            speed-=0.5;
+          if (speed < 0)
+            speed -= 0.5;
           else
-            speed+=0.5;
+            speed += 0.5;
         case 3:
         case 5:
         case 9:
-          hspeed+=1;
+          hspeed += 1;
           break;
         case 6:
         case 10:
-          h+=1;
+          h += 1;
           break;
         case 4:
-          if(speed < 0)
-            speed-=1;
+          if (speed < 0)
+            speed -= 1;
           else
-            speed+=1;
+            speed += 1;
         case 11:
-          if(speed < 0)
-            speed-=1;
+          if (speed < 0)
+            speed -= 1;
           else
-            speed+=1;
-          rows+=1;
+            speed += 1;
+          rows += 1;
           break;
         default:
       }
-      
+
     }
   }
 
@@ -205,15 +208,15 @@ function draw() {
     for (let i = 0; i < hurdle[lhr].length; i++) {
       if (abs(hurdle[lhr][i].x - mybox.x) < (hurdle[lhr][i].size + mybox.size) / 2) {
         //run=false;
-        sc.levelup(12);  //Game Over
-        if(crash===0){
+        sc.levelup(12); //Game Over
+        if (crash === 0) {
           score = score - abs(hspeed);
           speed = 0;
-          hspeed =0;
-        }else if(crash === 40){
+          hspeed = 0;
+        } else if (crash === 40) {
           screenshow = 'O';
         }
-        crash=crash+1;
+        crash = crash + 1;
       }
     }
   }
@@ -229,22 +232,35 @@ function draw() {
   box(base.w, base.h, 20); //base creation
   pop();
 
-
-  //keyboard controls
+  //key controls
   if (keyIsDown(LEFT_ARROW)) { // && speed > 0) {
     speed = -abs(speed);
   } else if (keyIsDown(RIGHT_ARROW)) { // && speed < 0) {
     speed = abs(speed);
   }
 
+  //mouseControls
+  /*let xCond = (mouseX > 0 && mouseX < width);
+  let yCond = (mouseY > 0 && mouseY < height);
+  let left = mouseX < width / 3;
+  let right = mouseX > width * 2 / 3;
+  if(mouseIsPressed){
+    if(screenshow == 'P' && yCond){
+      if ((mouseX > 0) && left) {
+        speed = -abs(speed);
+      } else if((mouseX < width) && right){
+        speed = abs(speed);
+      }
+    }
+  }*/
+  
   //hurdles motion
-  if (run && screenshow != 'E') {
-    score += abs(hspeed);
+  if (screenshow == 'P') {
     for (let j = hurdle.length - 1; j >= 0; j--) {
       for (let k = 0; k < hurdle[j].length; k++) {
         hurdle[j][k].createHurdle(hspeed);
       }
-      if (hurdle[j][0].y > (base.h + hurdle[j][0].size) / 2) {
+      if (hurdle[j][0].y > (base.h / 2) + hurdle[j][0].size * 1.5) {
         hurdle.pop(); //Hurdle deletion
       }
     }
@@ -255,20 +271,20 @@ function draw() {
       }
       hurdle.unshift(hdl); //adding new Hurdle
     }
-  } else { // if (screenshow == 'E' && run) {
+  } else {//if (frameCount > 2) {
     for (let j = hurdle.length - 1; j >= 0; j--) {
       for (let k = 0; k < hurdle[j].length; k++) {
         hurdle[j][k].createHurdle(0);
       }
     }
   }
-  
+
   //mybox lightning
   directionalLight(200, 0, 0, -base.w / 2, base.h / 2, 0);
 
   //controller box movement
   if (screenshow == 'P') {
-    if (keyIsPressed === true) {
+    if (keyIsPressed /*|| (mouseIsPressed && (xCond && yCond))*/) {
       //boundary condition
       if (abs(mybox.x + speed) >= (base.w - mybox.size) / 2) {
         diff = ((base.w - mybox.size) / 2) - abs(mybox.x);
@@ -293,13 +309,14 @@ function draw() {
     if (fc % int((base.w * 2) / (3 * abs(camsp))) === 0) {
       camsp = -camsp; //camera movement direction change
     }
+    fc += 1;
+  } else if(screenshow == 'P' && crash === 0){
+    score+=1;
   }
 
-  fc += 1;
 }
 
 function keyPressed() {
-
   if (keyCode === 32) { //spacebar
     if (run) {
       if (screenshow == 'P') { //when game is playing
@@ -334,6 +351,43 @@ function keyPressed() {
   }
   return false;
 }
+
+/*function mousePressed() {
+  let xCond = (mouseX > 0 && mouseX < width);
+  let yCond = (mouseY > 0 && mouseY < height);
+  let left = mouseX < width / 3;
+  let right = mouseX > width * 2 / 3;
+
+  if (screenshow == 'S' && (xCond && yCond)) {
+    screenshow = 'E'; //game enter
+    //cam.setPosition(0, 0, base.h * 55 / 90);
+    fc = 0;
+    camsp = -abs(camsp);
+    cam.setPosition(-base.w / 3, 0, base.h * 55 / 90);
+    loop();
+  } else if (screenshow == 'E' && (left || right) && (xCond && yCond)) {
+    screenshow = 'P';
+    //camMove = false;
+    run = true;
+    cam.setPosition(mybox.x, 0, base.h * 55 / 90);
+    loop();
+  } else if (screenshow == 'P' && (!left && !right) && (xCond && yCond)) {
+    screenshow = 'E'; //game enter
+    fc = 0;
+    camsp = -abs(camsp);
+    cam.setPosition(-base.w / 3, 0, base.h * 55 / 90);
+    //noLoop();
+  } else if (screenshow == 'O' && (xCond && yCond)) { //when game is over then reset
+    //RESET SETTINGS HERE
+    for (let i = hurdle.length - 1; i >= 0; i--) {
+      hurdle.pop();
+    }
+    setup();
+    loop();
+    //cam.setPosition(-base.w / 3, 0, base.h * 55 / 90);
+  }
+  return false;
+}*/
 
 function getBase() {
   return {
