@@ -61,16 +61,16 @@ function preload() {
     save: loadImage('https://i.imgur.com/mFwJcWt.png'),
   };
   
-  num = [loadImage('https://i.imgur.com/8trBP33.png'), 
-         loadImage('https://i.imgur.com/T6BwHqp.png'), 
-         loadImage('https://i.imgur.com/1RtvTQw.png'), 
-         loadImage('https://i.imgur.com/GhreAWo.png'), 
-         loadImage('https://i.imgur.com/wv65HJe.png'), 
-         loadImage('https://i.imgur.com/9mBwW4I.png'), 
-         loadImage('https://i.imgur.com/RgDJR9a.png'), 
-         loadImage('https://i.imgur.com/33vC0Ip.png'), 
-         loadImage('https://i.imgur.com/czfTA9L.png'), 
-         loadImage('https://i.imgur.com/OyUKIsq.png'),
+  num = [loadImage('https://i.imgur.com/8trBP33.png'), //0
+         loadImage('https://i.imgur.com/T6BwHqp.png'), //1
+         loadImage('https://i.imgur.com/1RtvTQw.png'), //2
+         loadImage('https://i.imgur.com/GhreAWo.png'), //3
+         loadImage('https://i.imgur.com/wv65HJe.png'), //4
+         loadImage('https://i.imgur.com/9mBwW4I.png'), //5
+         loadImage('https://i.imgur.com/RgDJR9a.png'), //6
+         loadImage('https://i.imgur.com/33vC0Ip.png'), //7
+         loadImage('https://i.imgur.com/czfTA9L.png'), //8
+         loadImage('https://i.imgur.com/OyUKIsq.png'), //9
         ];
 }
 
