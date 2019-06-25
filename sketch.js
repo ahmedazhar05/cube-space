@@ -44,33 +44,33 @@ let rows,
     down;
 
 function preload() {
-  song = loadSound('https://srv-file1.gofile.io/download/vYeU49/LifeIsMusic.mp3');
-  bump = loadSound('https://srv-file1.gofile.io/download/rPcSXf/collision.mp3');
-  fail = loadSound('https://srv-file1.gofile.io/download/rPcSXf/losec03.mp3');
-  start = loadSound('https://srv-file1.gofile.io/download/rPcSXf/Pressstartphoenixwright.mp3');
+  song = loadSound('./sound/LifeIsMusic.mp3');
+  bump = loadSound('./sound/collision.mp3');
+  fail = loadSound('./sound/losec03.mp3');
+  start = loadSound('./sound/Pressstartphoenixwright.mp3');
   
   
   s = {
-    start: loadImage('https://i.imgur.com/9sGVhCw.png'),
-    over: loadImage('https://i.imgur.com/mFwJcWt.png'),
-    score: loadImage('https://i.imgur.com/02ApgEr.png'),
-    pause: loadImage('https://i.imgur.com/APpKT78.png'),
-    level: loadImage('https://i.imgur.com/qTUb9NJ.png'),
-    flevel: loadImage('https://i.imgur.com/WXC7xpP.png'),
-    ov: loadImage('https://i.imgur.com/DYwHfx5.png'),
-    save: loadImage('https://i.imgur.com/mFwJcWt.png'),
+    start: loadImage('./images/GS.png'),
+    over: loadImage('./images/GO.png'),
+    score: loadImage('./images/Score.png'),
+    pause: loadImage('./images/Pause.png'),
+    level: loadImage('./images/Level.png'),
+    flevel: loadImage('./images/FL.png'),
+    ov: loadImage('./images/Ov.png'),
+    save: loadImage('./images/save.png'),
   };
   
-  num = [loadImage('https://i.imgur.com/8trBP33.png'), //0
-         loadImage('https://i.imgur.com/T6BwHqp.png'), //1
-         loadImage('https://i.imgur.com/1RtvTQw.png'), //2
-         loadImage('https://i.imgur.com/GhreAWo.png'), //3
-         loadImage('https://i.imgur.com/wv65HJe.png'), //4
-         loadImage('https://i.imgur.com/9mBwW4I.png'), //5
-         loadImage('https://i.imgur.com/RgDJR9a.png'), //6
-         loadImage('https://i.imgur.com/33vC0Ip.png'), //7
-         loadImage('https://i.imgur.com/czfTA9L.png'), //8
-         loadImage('https://i.imgur.com/OyUKIsq.png'), //9
+  num = [loadImage('./images/N0.png'), //0
+         loadImage('./images/N1.png'), //1
+         loadImage('./images/N2.png'), //2
+         loadImage('./images/N3.png'), //3
+         loadImage('./images/N4.png'), //4
+         loadImage('./images/N5.png'), //5
+         loadImage('./images/N6.png'), //6
+         loadImage('./images/N7.png'), //7
+         loadImage('./images/N8.png'), //8
+         loadImage('./images/N9.png'), //9
         ];
 }
 
