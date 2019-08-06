@@ -165,6 +165,10 @@ function setup() {
 }
 
 function draw() {
+  if(!song.isLoaded())
+    song = loadSound('./sound/LifeIsMusic.mp3');
+  if(!song.isLooping())
+    song.loop();
   background(86, 176, 255);
   if (screenshow === 'S') {
     cam.setPosition(0, 0, base.h * 75 / 90);
