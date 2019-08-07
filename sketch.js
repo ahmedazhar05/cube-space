@@ -167,7 +167,7 @@ function setup() {
 function draw() {
   if(!song.isLoaded())
     song = loadSound('./sound/LifeIsMusic.mp3');
-  if(!song.isLooping())
+  if(!song.isLooping() && screenshow != 'O')
     song.loop();
   background(86, 176, 255);
   if (screenshow === 'S') {
