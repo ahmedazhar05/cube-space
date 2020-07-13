@@ -3,7 +3,7 @@ A game in which a player has to control a Red Cube while moving forward without 
 
 ## Game Links
 
-[Github.io](https://ahmedazhar05.github.io/cube-space), or
+[Github.io](https://ahmedazhar05.github.io/cube-space) or
 [p5.js](http://bit.do/cube_space)
             
 ## Contacts
