@@ -1,17 +1,11 @@
 # Cube Space
 A game in which a player has to control a Red Cube while moving forward without bumping into Hurdles.
 
-Game Link : [Github Link](https://ahmedazhar05.github.io/cube-space)
-                            OR
-            [p5.js Link](http://bit.do/cube_space)
+## Game Links
 
-Facebook : [ahmedazhar05](https://fb.me/ahmedazhar05)
+[Github Link](https://ahmedazhar05.github.io/cube-space), or
+[p5.js Link](http://bit.do/cube_space)
+            
+## Contacts
 
-Twitter : [ahmedazhar05](https://twitter.com/ahmedazhar05)
-
-Instagram : [ahmedazhar05](https://instagram.com/ahmedazhar05)
-
-Telegram : [ahmedazhar05](https://t.me/ahmedazhar05)
-
-Snapchat : [ahmedazhar05](https://snapchat.com/add/ahmedazhar05)
-
+[LinkedIn](https://www.linkedin.com/in/mohammed-azhar-ahmed-4006601b2), [Facebook](https://fb.me/ahmedazhar05), [Twitter](https://twitter.com/ahmedazhar05), [Instagram](https://instagram.com/ahmedazhar05), Telegram : [Telegram](https://t.me/ahmedazhar05), Snapchat : [Snapchat](https://snapchat.com/add/ahmedazhar05)
